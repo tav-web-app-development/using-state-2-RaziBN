@@ -2,12 +2,18 @@ import "./App.css";
 import ProductCardContainer from "./components/ProductCardContainer";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import { useState } from "react";
+import Form from "./components/form";
 
 function App() {
+  const [itemInCart, setItemInCart] = useState(0);
+  user.itemsInCart = itemInCart;
+  const [showForm, setShowForm] = useState(false);
   return (
     <main className="store">
-      <NavBar user={user} />
-      <ProductCardContainer products={products} />
+      <NavBar user={user} setShowForm={setShowForm} />
+      {showForm && <Form />}
+      <ProductCardContainer products={products} setItemInCart={setItemInCart} />
       <Footer />
     </main>
   );
